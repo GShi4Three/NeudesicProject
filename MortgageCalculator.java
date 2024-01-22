@@ -75,19 +75,20 @@ public class MortgageCalculator {
             cumulativePaymentAmount += monthlyMortgagePayment;
             cumulativeInterestAmount += monthlyInterestAmmount;
             cumulativePrincipleAmount += monthlyPrincipleAmmount;
-            // Outputting values to terminal
-            System.out.println("Month " + i);
-            System.out.println("Starting Balance: $" + Math.round(startingBalance * 100) / 100.0);
-            System.out.println("Remaining Balance: $" + Math.round(remainingBalance * 100) / 100.0);
-            System.out.println("Payment Amount: $" + Math.round((monthlyMortgagePayment) * 100) / 100.0);
-            System.out.println("Cumulative Payment Amount: $" + Math.round((cumulativePaymentAmount) * 100) / 100.0);
-            System.out.println("Principle Amount: $" + Math.round((monthlyPrincipleAmmount) * 100) / 100.0);
-            System.out.println("Cumulative Principle Amount: $" + Math.round((cumulativePrincipleAmount) * 100) / 100.0);
-            System.out.println("Interest Amount: $" + Math.round((monthlyInterestAmmount) * 100) / 100.0);
-            System.out.println("Cumulative Interest Amount: $" + Math.round((cumulativeInterestAmount) * 100) / 100.0);
+            // Storing appropriate values in each cell of the table
+            data[i - 1][0] = "Month " + i;
+            data[i - 1][1] = "$" + Math.round(startingBalance * 100) / 100.0;
+            data[i - 1][2] = "$" + Math.round(remainingBalance * 100) / 100.0;
+            data[i - 1][3] = "$" + Math.round((monthlyMortgagePayment) * 100) / 100.0;
+            data[i - 1][4] = "$" + Math.round((cumulativePaymentAmount) * 100) / 100.0;
+            data[i - 1][5] = "$" + Math.round((monthlyPrincipleAmmount) * 100) / 100.0;
+            data[i - 1][6] = "$" + Math.round((cumulativePrincipleAmount) * 100) / 100.0;
+            data[i - 1][7] = "$" + Math.round((monthlyInterestAmmount) * 100) / 100.0;
+            data[i - 1][8] = "$" + Math.round((cumulativeInterestAmount) * 100) / 100.0;
             // Setting next month's starting balance to the current month's remaining balance
             startingBalance = remainingBalance;
         }
+        // Opening the window and displaying the table
         amortizationScheduleTable(data);
 
         scanner.close();
