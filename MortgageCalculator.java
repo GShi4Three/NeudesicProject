@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class MortgageCalculator {
 
     public static void main (String[] args){
-         Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         double principleAmount, annualInterestRate;
         int loanLengthYears;
@@ -16,6 +16,10 @@ public class MortgageCalculator {
 
         System.out.println("Input a value for the loan period in years: ");
         loanLengthYears = scanner.nextInt();
+        // Calculculating monthly mortgage payment
+        int loanLengthMonths = loanLengthYears * 12;
+        double monthlyInterestRate = (annualInterestRate / 100) / 12;
+        double monthlyMortgagePayment = principleAmount * (monthlyInterestRate * Math.pow((1 + monthlyInterestRate), loanLengthMonths)) / (Math.pow((1 + monthlyInterestRate), loanLengthMonths) - 1);
 
         scanner.close();
     }
