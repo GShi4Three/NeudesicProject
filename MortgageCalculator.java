@@ -1,7 +1,33 @@
 import java.util.Scanner;
 import java.lang.Math;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 public class MortgageCalculator {
+
+    private static void amortizationScheduleTable(String[][] data){
+        // Initiallizing from
+        JFrame f = new JFrame("Amortization Schedule Calculator");
+        
+        // Column Names
+        String[] columnNames = { "Payment Month", "Starting Balance", "Remaining Balance", "Payment Amount", "Total Balance Paid",
+        "Principle Amount", "Total Principle Paid",  "Interest Amount", "Total Interest Paid" };
+ 
+        // Initializing table
+        JTable t = new JTable(data, columnNames);
+
+        // Initialling scroll pane
+        JScrollPane sp = new JScrollPane(t);
+        // Adding scroll pane to frame
+        f.add(sp);
+        // Frame Size
+        f.setSize(1500, 1000);
+        // Frame Visiblility
+        f.setVisible(true);
+        // Closing window ends program
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
 
     public static void main (String[] args){
         Scanner scanner = new Scanner(System.in);
@@ -37,6 +63,8 @@ public class MortgageCalculator {
         double cumulativePaymentAmount = 0;
         double cumulativePrincipleAmount = 0;
         double cumulativeInterestAmount = 0;
+
+        String[][] data = new String[loanLengthMonths][9];
         
         for(int i = 1; i <= loanLengthMonths; i++){
             // Initializing values that change each month
@@ -60,6 +88,8 @@ public class MortgageCalculator {
             // Setting next month's starting balance to the current month's remaining balance
             startingBalance = remainingBalance;
         }
+        amortizationScheduleTable(data);
+
         scanner.close();
     }
 }
