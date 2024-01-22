@@ -7,10 +7,10 @@ import javax.swing.JTable;
 public class MortgageCalculator {
 
     private static void amortizationScheduleTable(String[][] data){
-        // Initiallizing from
+        // Initiallizing frame
         JFrame f = new JFrame("Amortization Schedule Calculator");
         
-        // Column Names
+        // Creating column names
         String[] columnNames = { "Payment Month", "Starting Balance", "Remaining Balance", "Payment Amount", "Total Balance Paid",
         "Principle Amount", "Total Principle Paid",  "Interest Amount", "Total Interest Paid" };
  
@@ -31,7 +31,6 @@ public class MortgageCalculator {
 
     public static void main (String[] args){
         Scanner scanner = new Scanner(System.in);
-
         double principleAmount, annualInterestRate;
         int loanLengthYears;
         // Prompting users for necessary values to calculate the monthly mortgage payment
@@ -47,7 +46,7 @@ public class MortgageCalculator {
         int loanLengthMonths = loanLengthYears * 12;
         double monthlyInterestRate = (annualInterestRate / 100) / 12;
         double monthlyMortgagePayment = principleAmount * (monthlyInterestRate * Math.pow((1 + monthlyInterestRate), loanLengthMonths)) / (Math.pow((1 + monthlyInterestRate), loanLengthMonths) - 1);
-        // Calculating other important static values to output in the terminal
+        // Calculating other important values to output in the terminal
         double totalInterest = (monthlyMortgagePayment * loanLengthMonths) - principleAmount;
         double totalPayment = principleAmount + totalInterest;
         // Outputting values to terminal
@@ -63,7 +62,7 @@ public class MortgageCalculator {
         double cumulativePaymentAmount = 0;
         double cumulativePrincipleAmount = 0;
         double cumulativeInterestAmount = 0;
-
+        // Initializing a 2D string array to store the calculated values into the table
         String[][] data = new String[loanLengthMonths][9];
         
         for(int i = 1; i <= loanLengthMonths; i++){
