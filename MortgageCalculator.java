@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.lang.Math;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -42,6 +41,7 @@ public class MortgageCalculator {
         }
         return data;
     }
+
     private static void amortizationScheduleTable(String[][] data){
         // Initiallizing frame
         JFrame f = new JFrame("Amortization Schedule Calculator");
@@ -64,6 +64,7 @@ public class MortgageCalculator {
 
     public static void main (String[] args){
         Scanner scanner = new Scanner(System.in);
+
         double principleAmount, annualInterestRate;
         int loanLengthYears;
         // Prompting users for necessary values to calculate the monthly mortgage payment
@@ -87,11 +88,11 @@ public class MortgageCalculator {
         System.out.println("The number of monthly payments is " + loanLengthMonths);
         System.out.println("The total interest amount is $" + Math.round(totalInterest * 100) / 100.0);
         System.out.println("The total payment amount is $" + Math.round(totalPayment * 100) / 100.0);
-        // Storing calculated monthly values into a 2D array to display in the table
+        // Storing calculated monthly values in a 2D array to display in the table
         String[][] data = storingData(principleAmount, monthlyMortgagePayment, monthlyInterestRate, loanLengthMonths);
         // Opening the window and displaying the table
         amortizationScheduleTable(data);
-
+        
         scanner.close();
     }
 }
